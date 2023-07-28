@@ -1,5 +1,11 @@
 # Sample applications for the BL5340PA DVK
 
+## Sleepy Advertiser
+
+This application can be used to measure sleep current when advertising
+or in power off mode.
+
+Modified from zephyr/samples/boards/nrf/system_off and zephyr/samples/bluetooth/beacon.
 
 ## Throughput
 
