@@ -1,0 +1,68 @@
+sample:
+  description: Bluetooth Low Energy throughput sample
+  name: BLE throughput
+common:
+  build_only: true
+  integration_platforms:
+    - nrf52dk_nrf52832
+    - nrf52840dk_nrf52840
+    - nrf5340dk_nrf5340_cpuapp
+    - nrf5340dk_nrf5340_cpuapp_ns
+    - bl5340_dvk_cpuapp
+    - bl5340pa_dvk_cpuapp
+    - bl652_dvk
+    - bl653_dvk
+    - bl654_dvk
+    - bl654_sensor_board
+    - bl654_usb
+tests:
+  sample.bluetooth.throughput:
+    platform_allow: nrf52dk_nrf52832 nrf52840dk_nrf52840 nrf5340dk_nrf5340_cpuapp
+      nrf5340dk_nrf5340_cpuapp_ns bl5340_dvk_cpuapp bl5340pa_dvk_cpuapp 
+      bl652_dvk bl653_dvk bl654_dvk bl654_sensor_board bl654_usb
+    tags: bluetooth ci_build
+  sample.bluetooth.throughput.fem_shield:
+    platform_allow: nrf5340dk_nrf5340_cpuapp
+    extra_args: SHIELD=nrf21540_ek_fwd hci_rpmsg_SHIELD=nrf21540_ek
+    tags: bluetooth fem
+  sample.bluetooth.throughput.mock_using_nrf52840:
+    platform_allow: nrf21540dk_nrf52840
+    extra_args: MOCK_LCZ_FEM=y
+  sample.bluetooth.throughput.mock_using_nrf5340:
+    platform_allow: nrf5340dk_nrf5340_cpuapp
+    extra_args: SHIELD=nrf21540_ek_fwd hci_rpmsg_SHIELD=nrf21540_ek MOCK_LCZ_FEM=y
+  sample.bluetooth.throughput.bl5340_internal_ant:
+    platform_allow: |
+      bl5340pa_dvk_cpuapp
+    extra_args: hci_rpmsg_CONFIG_LCZ_FEM_INTERNAL_ANTENNA=y
+  sample.bluetooth.throughput.gpio:
+    platform_allow: |
+      bl5340pa_dvk_cpuapp
+    extra_args: hci_rpmsg_CONFIG_MPSL_FEM_NRF21540_GPIO=y
+  sample.bluetooth.throughput.ce:
+    platform_allow: |
+      bl5340pa_dvk_cpuapp
+    extra_args: hci_rpmsg_CONFIG_LCZ_FEM_REGION=2
+  sample.bluetooth.throughput.ce.fail:
+    platform_allow: |
+      bl5340pa_dvk_cpuapp
+    extra_args: |
+      hci_rpmsg_CONFIG_LCZ_FEM_REGION=2
+      hci_rpmsg_CONFIG_MPSL_FEM_NRF21540_GPIO=y
+  sample.bluetooth.throughput.model:
+    platform_allow: |
+      bl5340pa_dvk_cpuapp
+    extra_args: |
+      hci_rpmsg_CONFIG_LCZ_FEM_REGION=0
+      hci_rpmsg_CONFIG_MPSL_FEM_POWER_MODEL=y
+  sample.bluetooth.throughput.runtime:
+    platform_allow: |
+      bl5340pa_dvk_cpuapp
+    extra_args: |
+      hci_rpmsg_CONFIG_MPSL_FEM_NRF21540_RUNTIME_PA_GAIN_CONTROL=y
+  sample.bluetooth.throughput.runtime.fail:
+    platform_allow: |
+      bl5340pa_dvk_cpuapp
+    extra_args: |
+      hci_rpmsg_CONFIG_MPSL_FEM_NRF21540_GPIO=y
+      hci_rpmsg_CONFIG_MPSL_FEM_NRF21540_RUNTIME_PA_GAIN_CONTROL=y
