@@ -1,0 +1,24 @@
+#
+# Copyright (c) 2022 Nordic Semiconductor
+# Copyright (c) 2023 Laird Connectivity
+#
+# SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
+#
+
+source "Kconfig.zephyr"
+
+menu "Nordic BLE throughput sample"
+
+config BT_THROUGHPUT_FILE
+	bool "BT file based throughput"
+	default y
+
+config BT_THROUGHPUT_DURATION
+	int "Throughput test duration in milliseconds"
+	default 20000
+
+config BT_THROUGHPUT_BUILD_VERSION
+	string "UTC of build (from CMake)"
+	default "0"
+
+endmenu
