@@ -94,7 +94,7 @@ int main(void)
 		return 0;
 	}
 
-	LOG_INF("%s BT sleepy advertiser on", CONFIG_BOARD);
+	LOG_INF("BT sleepy advertiser on %s", CONFIG_BOARD);
 	LOG_INF("Version %s\n", VERSION_STR);
 
 #if defined(CONFIG_BT)
