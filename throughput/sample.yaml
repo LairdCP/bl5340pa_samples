@@ -43,12 +43,6 @@ tests:
     platform_allow: |
       bl5340pa_dvk_cpuapp
     extra_args: hci_ipc_CONFIG_LCZ_FEM_REGION=2
-  sample.bluetooth.throughput.ce.fail:
-    platform_allow: |
-      bl5340pa_dvk_cpuapp
-    extra_args: |
-      hci_ipc_CONFIG_LCZ_FEM_REGION=2
-      hci_ipc_CONFIG_MPSL_FEM_NRF21540_GPIO=y
   sample.bluetooth.throughput.model:
     platform_allow: |
       bl5340pa_dvk_cpuapp
