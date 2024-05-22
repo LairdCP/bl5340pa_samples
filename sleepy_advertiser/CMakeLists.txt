@@ -6,13 +6,13 @@
 cmake_minimum_required(VERSION 3.20.0)
 
 # Allow testing of Laird Connectivity FEM driver with Nordic DKs
-# If child_image/hci_rpmsg.conf exists, then it must be explicitly set
+# If child_image/hci_ipc.conf exists, then it must be explicitly set
 # before using append.
 if(MOCK_LCZ_FEM AND BOARD STREQUAL nrf5340dk_nrf5340_cpuapp
-    AND hci_rpmsg_SHIELD STREQUAL nrf21540_ek)
+    AND hci_ipc_SHIELD STREQUAL nrf21540ek)
     message("Mocking Laird Connectivity Zephyr FEM Driver on nrf5340dk")
-    list(APPEND hci_rpmsg_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/fem.conf)
-    list(APPEND hci_rpmsg_DTC_OVERLAY_FILE ${CMAKE_SOURCE_DIR}/child_image/mock_lcz_fem.nrf21540_ek.overlay)
+    list(APPEND hci_ipc_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/fem.conf)
+    list(APPEND hci_ipc_DTC_OVERLAY_FILE ${CMAKE_SOURCE_DIR}/child_image/mock_lcz_fem.nrf21540ek.overlay)
 endif()
 
 # Make it easier to make FEM builds for multiple boards that are similar.
@@ -20,7 +20,7 @@ endif()
 # (overlay takes precedence)
 #
 if(BOARD STREQUAL bl5340pa_dvk_cpuapp)
-    list(APPEND hci_rpmsg_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/fem.conf)  
+    list(APPEND hci_ipc_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/fem.conf)  
 endif()
 
 if(MOCK_LCZ_FEM AND BOARD STREQUAL nrf21540dk_nrf52840)
@@ -35,11 +35,11 @@ endif()
 if(BOARD STREQUAL bl5340_dvk_cpuapp OR BOARD STREQUAL bl5340pa_dvk_cpuapp
     OR BOARD STREQUAL nrf5340dk_nrf5340_cpuapp)
 if(LOG_TYPE STREQUAL rtt)
-    list(APPEND hci_rpmsg_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/child_image/rtt_log.conf)
-    list(APPEND hci_rpmsg_DTC_OVERLAY_FILE ${CMAKE_SOURCE_DIR}/child_image/disable_uart.overlay)
+    list(APPEND hci_ipc_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/child_image/rtt_log.conf)
+    list(APPEND hci_ipc_DTC_OVERLAY_FILE ${CMAKE_SOURCE_DIR}/child_image/disable_uart.overlay)
 else()
-    list(APPEND hci_rpmsg_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/child_image/no_log.conf)
-    list(APPEND hci_rpmsg_DTC_OVERLAY_FILE ${CMAKE_SOURCE_DIR}/child_image/disable_uart.overlay)
+    list(APPEND hci_ipc_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/child_image/no_log.conf)
+    list(APPEND hci_ipc_DTC_OVERLAY_FILE ${CMAKE_SOURCE_DIR}/child_image/disable_uart.overlay)
 endif()
 endif() #CPUNET
 

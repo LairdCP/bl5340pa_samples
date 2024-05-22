@@ -21,7 +21,7 @@ The sample supports the following development kits:
 
 You can use any two of the development kits listed above and mix different development kits.
 
-.. include:: /includes/hci_rpmsg_overlay.txt
+.. include:: /includes/hci_ipc_overlay.txt
 
 The sample also requires a connection to a computer with a serial terminal |ANSI| for each of the development kits.
 
@@ -260,19 +260,19 @@ west build -p -b nrf21540dk_nrf52840 -- -DMOCK_LCZ_FEM=y
 
 nRF5340DK with nRF21540 Shield:
 
-west build -p -b nrf5340dk_nrf5340_cpuapp -- -DSHIELD=nrf21540_ek_fwd -Dhci_rpmsg_SHIELD=nrf21540_ek
+west build -p -b nrf5340dk_nrf5340_cpuapp -- -DSHIELD=nrf21540ek_fwd -Dhci_ipc_SHIELD=nrf21540ek
 
 Mock BL5340PA FEM control on nRF5340DK with nRF21540 Shield:
 
-west build -p -b nrf5340dk_nrf5340_cpuapp -- -DSHIELD=nrf21540_ek_fwd -Dhci_rpmsg_SHIELD=nrf21540_ek -DMOCK_LCZ_FEM=y
+west build -p -b nrf5340dk_nrf5340_cpuapp -- -DSHIELD=nrf21540ek_fwd -Dhci_ipc_SHIELD=nrf21540ek -DMOCK_LCZ_FEM=y
 
 Select internal antenna on BL5340PA
 
-west build -p -b bl5340pa_dvk_cpuapp -- -Dhci_rpmsg_CONFIG_LCZ_FEM_INTERNAL_ANTENNA=y
+west build -p -b bl5340pa_dvk_cpuapp -- -Dhci_ipc_CONFIG_LCZ_FEM_INTERNAL_ANTENNA=y
 
 Select CE configuration on BL5340PA
 
-west build -p -b bl5340pa_dvk_cpuapp -- -Dhci_rpmsg_CONFIG_LCZ_FEM_REGION=2
+west build -p -b bl5340pa_dvk_cpuapp -- -Dhci_ipc_CONFIG_LCZ_FEM_REGION=2
 
 Dependencies
 *************

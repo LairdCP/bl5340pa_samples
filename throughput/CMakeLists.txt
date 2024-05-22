@@ -10,14 +10,14 @@ cmake_minimum_required(VERSION 3.20.0)
 set(DTC_OVERLAY_FILE "dts.overlay")
 
 # Allow testing of Laird Connectivity FEM driver with Nordic DKs
-# If child_image/hci_rpmsg.conf exists, then it must be explicitly set
+# If child_image/hci_ipc.conf exists, then it must be explicitly set
 # before using append.
 if(MOCK_LCZ_FEM AND BOARD STREQUAL nrf5340dk_nrf5340_cpuapp
-    AND hci_rpmsg_SHIELD STREQUAL nrf21540_ek)
+    AND hci_ipc_SHIELD STREQUAL nrf21540ek)
     message("Mocking Laird Connectivity Zephyr FEM Driver on nrf5340dk")
-	set(hci_rpmsg_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/child_image/hci_rpmsg.conf)
-    list(APPEND hci_rpmsg_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/fem.conf)
-    list(APPEND hci_rpmsg_DTC_OVERLAY_FILE ${CMAKE_SOURCE_DIR}/child_image/mock_lcz_fem.nrf21540_ek.overlay)
+	set(hci_ipc_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/child_image/hci_ipc.conf)
+    list(APPEND hci_ipc_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/fem.conf)
+    list(APPEND hci_ipc_DTC_OVERLAY_FILE ${CMAKE_SOURCE_DIR}/child_image/mock_lcz_fem.nrf21540ek.overlay)
 endif()
 
 # Make it easier to make FEM builds for multiple boards that are similar.
@@ -25,8 +25,8 @@ endif()
 # (overlay takes precedence)
 #
 if(BOARD STREQUAL bl5340pa_dvk_cpuapp)
-	set(hci_rpmsg_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/child_image/hci_rpmsg.conf)
-    list(APPEND hci_rpmsg_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/fem.conf)
+	set(hci_ipc_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/child_image/hci_ipc.conf)
+    list(APPEND hci_ipc_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/fem.conf)
 endif()
 
 if(MOCK_LCZ_FEM AND BOARD STREQUAL nrf21540dk_nrf52840)

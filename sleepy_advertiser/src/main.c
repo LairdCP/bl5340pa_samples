@@ -11,9 +11,8 @@ LOG_MODULE_REGISTER(main, CONFIG_LOG_DEFAULT_LEVEL);
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/init.h>
-#include <zephyr/pm/pm.h>
 #include <zephyr/pm/device.h>
-#include <zephyr/pm/policy.h>
+#include <zephyr/sys/poweroff.h>
 
 #include <zephyr/bluetooth/bluetooth.h>
 
@@ -45,21 +44,6 @@ static const struct bt_data ad[] = {
 };
 #endif
 #endif
-
-/* Prevent deep sleep (system off) from being entered on long timeouts
- * or `K_FOREVER` due to the default residency policy.
- *
- * This has to be done before anything tries to sleep, which means
- * before the threading system starts up between PRE_KERNEL_2 and
- * POST_KERNEL.  Do it at the start of PRE_KERNEL_2.
- */
-static int disable_ds_1(void)
-{
-	pm_policy_state_lock_get(PM_STATE_SOFT_OFF, PM_ALL_SUBSTATES);
-	return 0;
-}
-
-SYS_INIT(disable_ds_1, PRE_KERNEL_2, 0);
 
 #if defined(CONFIG_BT)
 static void start_advertising(void)
@@ -113,19 +97,10 @@ int main(void)
 	LOG_INF("suspend status: %d resume status: %d", rc, rc2);
 
 	LOG_INF("Entering system off; press reset button to restart");
-
-	/* Above we disabled entry to deep sleep based on duration of
-	 * controlled delay.  Here we need to override that, then
-	 * force entry to deep sleep on any delay.
-	 */
-	pm_state_force(0u, &(struct pm_state_info){PM_STATE_SOFT_OFF, 0, 0});
-
-	/* Now we need to go sleep. This will let the idle thread run and
-	 * the pm subsystem will use the forced state.
-	 */
+	rc = pm_device_action_run(cons, PM_DEVICE_ACTION_SUSPEND);
 	k_sleep(K_SECONDS(1));
+	sys_poweroff();
 
-	pm_device_action_run(cons, PM_DEVICE_ACTION_RESUME);
 	LOG_ERR("System off failed");
 	return 0;
 }
