@@ -311,6 +311,8 @@ static int adv_create_ext(const struct bt_conn_le_phy_param *phy)
 		/* Configure options for PHY */
 		switch (phy->options) {
 		case BT_CONN_LE_PHY_OPT_CODED_S2:
+			printk("Coded s=2 is not used for advertisements, but can be used during a "
+			       "connection\n");
 		case BT_CONN_LE_PHY_OPT_CODED_S8:
 			param.options |= BT_LE_ADV_OPT_CODED;
 			break;
