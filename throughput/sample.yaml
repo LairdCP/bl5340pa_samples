@@ -60,3 +60,4 @@ tests:
     extra_args: |
       hci_ipc_CONFIG_MPSL_FEM_NRF21540_GPIO=y
       hci_ipc_CONFIG_MPSL_FEM_NRF21540_RUNTIME_PA_GAIN_CONTROL=y
+    tags: should_fail
