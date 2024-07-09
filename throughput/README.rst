@@ -52,7 +52,7 @@ Connection interval
 
 Physical layer (PHY) data rate
    Starting with Bluetooth 5, the over-the-air data rate in Bluetooth Low Energy can exceed 1 Ms/s (mega symbols per second), which allows for faster transmission.
-   In addition, you can use coded PHY (available on the nRF52840 SoC only) for long-range transmission.
+   In addition, you can use coded PHY (available on select nRF SoCs) for long-range transmission.
 
 By default, the following connection parameter values are used:
 
@@ -256,23 +256,23 @@ Buttons not supported on DVK.
 
 Mock BL5340PA FEM control on nrf21540dk_nrf52840:
 
-west build -p -b nrf21540dk_nrf52840 -- -DMOCK_LCZ_FEM=y
+west build -p -b nrf21540dk/nrf52840 -- -DMOCK_LCZ_FEM=y
 
 nRF5340DK with nRF21540 Shield:
 
-west build -p -b nrf5340dk_nrf5340_cpuapp -- -DSHIELD=nrf21540ek_fwd -Dhci_ipc_SHIELD=nrf21540ek
+west build -p -b nrf5340dk/nrf5340/cpuapp -- -DSHIELD=nrf21540ek_fwd -Dhci_ipc_SHIELD=nrf21540ek
 
 Mock BL5340PA FEM control on nRF5340DK with nRF21540 Shield:
 
-west build -p -b nrf5340dk_nrf5340_cpuapp -- -DSHIELD=nrf21540ek_fwd -Dhci_ipc_SHIELD=nrf21540ek -DMOCK_LCZ_FEM=y
+west build -p -b nrf5340dk/nrf5340/cpuapp -- -DSHIELD=nrf21540ek_fwd -Dhci_ipc_SHIELD=nrf21540ek -DMOCK_LCZ_FEM=y
 
 Select internal antenna on BL5340PA
 
-west build -p -b bl5340pa_dvk_cpuapp -- -Dhci_ipc_CONFIG_LCZ_FEM_INTERNAL_ANTENNA=y
+west build -p -b bl5340pa_dvk/nrf5340/cpuapp -- -Dhci_ipc_CONFIG_LCZ_FEM_INTERNAL_ANTENNA=y
 
 Select CE configuration on BL5340PA
 
-west build -p -b bl5340pa_dvk_cpuapp -- -Dhci_ipc_CONFIG_LCZ_FEM_REGION=2
+west build -p -b bl5340pa_dvk/nrf5340/cpuapp -- -Dhci_ipc_CONFIG_LCZ_FEM_REGION=2
 
 Dependencies
 *************

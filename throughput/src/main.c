@@ -30,7 +30,7 @@
 
 #include "main.h"
 
-#define VERSION_STR "2.2.0." CONFIG_BT_THROUGHPUT_BUILD_VERSION
+#define VERSION_STR "2.3.0." CONFIG_BT_THROUGHPUT_BUILD_VERSION
 
 #define DEVICE_NAME	CONFIG_BT_DEVICE_NAME
 #define DEVICE_NAME_LEN (sizeof(DEVICE_NAME) - 1)
@@ -50,7 +50,7 @@ static struct bt_conn *default_conn;
 static uint8_t handle_type;
 static uint16_t handle;
 static struct bt_throughput throughput;
-static struct bt_uuid *uuid128 = BT_UUID_THROUGHPUT;
+static const struct bt_uuid *uuid128 = BT_UUID_THROUGHPUT;
 static struct bt_gatt_exchange_params exchange_params;
 static struct bt_le_conn_param *conn_param =
 	BT_LE_CONN_PARAM(INTERVAL_MIN, INTERVAL_MAX, 0, 400);
