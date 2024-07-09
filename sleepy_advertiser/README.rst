@@ -40,19 +40,19 @@ Running:
 
 Mock BL5340PA FEM control on nrf21540dk_nrf52840:
 
-west build -p -b nrf21540dk_nrf52840 -- -DMOCK_LCZ_FEM=y
+west build -p -b nrf21540dk/nrf52840 -- -DMOCK_LCZ_FEM=y
 
 nRF5340DK with nRF21540 Shield:
 
-west build -p -b nrf5340dk_nrf5340_cpuapp -- -DSHIELD=nrf21540ek_fwd -Dhci_ipc_SHIELD=nrf21540ek
+west build -p -b nrf5340dk/nrf5340/cpuapp -- -DSHIELD=nrf21540ek_fwd -Dhci_ipc_SHIELD=nrf21540ek
 
 Mock BL5340PA FEM control on nRF5340DK with nRF21540 Shield with Network core RTT logging:
 
-west build -p -b nrf5340dk_nrf5340_cpuapp -- -DSHIELD=nrf21540ek_fwd -Dhci_ipc_SHIELD=nrf21540ek -DMOCK_LCZ_FEM=y -DLOG_TYPE=rtt
+west build -p -b nrf5340dk/nrf5340/cpuapp -- -DSHIELD=nrf21540ek_fwd -Dhci_ipc_SHIELD=nrf21540ek -DMOCK_LCZ_FEM=y -DLOG_TYPE=rtt
 
 Disable advertisement and select internal antenna
 
-west build -p -b bl5340pa_dvk_cpuapp -- -Dhci_ipc_CONFIG_LCZ_FEM_INTERNAL_ANTENNA=y -DCONFIG_ADVERTISE=n
+west build -p -b bl5340pa_dvk/nrf5340/cpuapp -- -Dhci_ipc_CONFIG_LCZ_FEM_INTERNAL_ANTENNA=y -DCONFIG_ADVERTISE=n
 
 Sample Output
 =================

@@ -16,7 +16,7 @@ LOG_MODULE_REGISTER(main, CONFIG_LOG_DEFAULT_LEVEL);
 
 #include <zephyr/bluetooth/bluetooth.h>
 
-#define VERSION_STR "1.1.0." CONFIG_BUILD_TIME
+#define VERSION_STR "1.2.0." CONFIG_BUILD_TIME
 
 #if defined(CONFIG_BT)
 #define DEVICE_NAME	CONFIG_BT_DEVICE_NAME
