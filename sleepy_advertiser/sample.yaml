@@ -22,6 +22,11 @@ tests:
     platform_allow: |
       nrf5340dk/nrf5340/cpuapp
     extra_args: SHIELD=nrf21540ek_fwd hci_ipc_SHIELD=nrf21540ek MOCK_LCZ_FEM=y
+  sample.boards.nrf.sleepy_advertiser.bl5340_no_adv:
+    platform_allow: |
+      bl5340pa_dvk/nrf5340/cpuapp
+    extra_configs:
+      - CONFIG_ADVERTISE=n
   sample.boards.nrf.sleepy_advertiser.bl5340_internal_ant_no_adv:
     platform_allow: |
       bl5340pa_dvk/nrf5340/cpuapp
