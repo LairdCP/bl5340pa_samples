@@ -40,3 +40,10 @@ tests:
       - CONFIG_ADVERTISE_FAST=y
       - CONFIG_SCANNABLE=y
       - CONFIG_SLEEP_DURATION_SECONDS=600
+  sample.boards.nrf.sleepy_advertiser.timing:
+    platform_allow: |
+      bl5340pa_dvk/nrf5340/cpuapp
+    extra_args:
+      - LOG_TYPE=rtt
+      - hci_ipc_CONFIG_LCZ_FEM_LOG_LEVEL_DBG=y
+      - hci_ipc_CONFIG_LCZ_FEM_DEBUG_MODEL_TIMING=y
