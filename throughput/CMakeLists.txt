@@ -1,6 +1,6 @@
 #
 # Copyright (c) 2018-2023 Nordic Semiconductor
-# Copyright (c) 2023-2024 Laird Connectivity
+# Copyright (c) 2023-2024 Ezurio
 #
 # SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
 #
@@ -9,12 +9,12 @@ cmake_minimum_required(VERSION 3.20.0)
 
 set(DTC_OVERLAY_FILE "dts.overlay")
 
-# Allow testing of Laird Connectivity FEM driver with Nordic DKs
+# Allow testing of Ezurio FEM driver with Nordic DKs
 # If child_image/hci_ipc.conf exists, then it must be explicitly set
 # before using append.
 if(MOCK_LCZ_FEM AND BOARD STREQUAL nrf5340dk/nrf5340/cpuapp
     AND hci_ipc_SHIELD STREQUAL nrf21540ek)
-    message("Mocking Laird Connectivity Zephyr FEM Driver on nrf5340dk")
+    message("Mocking Ezurio Zephyr FEM Driver on nrf5340dk")
 	set(hci_ipc_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/child_image/hci_ipc.conf)
     list(APPEND hci_ipc_OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/fem.conf)
     list(APPEND hci_ipc_DTC_OVERLAY_FILE ${CMAKE_SOURCE_DIR}/child_image/mock_lcz_fem.nrf21540ek.overlay)
@@ -30,7 +30,7 @@ if(BOARD STREQUAL bl5340pa_dvk/nrf5340/cpuapp)
 endif()
 
 if(MOCK_LCZ_FEM AND BOARD STREQUAL nrf21540dk/nrf52840)
-    message("Mocking Laird Connectivity Zephyr FEM Driver on nrf21540dk")
+    message("Mocking Ezurio Zephyr FEM Driver on nrf21540dk")
     list(APPEND OVERLAY_CONFIG ${CMAKE_SOURCE_DIR}/fem.conf)
     list(APPEND DTC_OVERLAY_FILE ${CMAKE_SOURCE_DIR}/boards/mock_lcz_fem.nrf21540dk_nrf52840.overlay)
 endif()

@@ -250,7 +250,7 @@ For the peer::
    [local] received 1242945 bytes (1213 KB) in 2511 GATT writes at 1415583 bps
 
 
-Laird Connectivity Version
+Ezurio Version
 ==========================
 Buttons not supported on DVK.
 

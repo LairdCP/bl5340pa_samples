@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2015-2016 Intel Corporation
  * Copyright (c) 2019 Nordic Semiconductor ASA
- * Copyright (c) 2023 Laird Connectivity
+ * Copyright (c) 2023-2024 Ezurio
  *
  * SPDX-License-Identifier: Apache-2.0
  */

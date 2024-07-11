@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2022 Nordic Semiconductor ASA
- * Copyright (c) 2023 Laird Connectivity
+ * Copyright (c) 2023-2024 Ezurio
  * 
  * SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
  */
