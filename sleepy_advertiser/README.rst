@@ -52,7 +52,7 @@ west build -p -b nrf5340dk/nrf5340/cpuapp -- -DSHIELD=nrf21540ek_fwd -Dhci_ipc_S
 
 Disable advertisement and select internal antenna
 
-west build -p -b bl5340pa_dvk/nrf5340/cpuapp -- -Dhci_ipc_CONFIG_LCZ_FEM_INTERNAL_ANTENNA=y -DCONFIG_ADVERTISE=n
+west build -p -b bl5340_dvk/nrf5340/cpuapp/pa -- -Dhci_ipc_CONFIG_LCZ_FEM_INTERNAL_ANTENNA=y -DCONFIG_ADVERTISE=n
 
 Sample Output
 =================
